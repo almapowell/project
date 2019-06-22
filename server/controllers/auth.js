@@ -7,23 +7,23 @@ module.exports = {
             const db = req.app.get('db')
             const { name, email, password } = req.body
 
-            let users = await db.findUserByEmail(email)
-            let user = users[0]
+            let foundAdmin = await db.find_admin_by_email(email)
+            let admin = foundAdmin[0]
 
-            if (user) {
+            if (admin) {
                 return res.status(409).send('email is being used')
             }
 
             const salt = bcrypt.genSaltSync(10)
             const hash = bcrypt.hashSync(password, salt)
 
-            let response = await db.createUser({name, email, hash})
-            let newUser = response[0]
+            let response = await db.create_admin({name, email, hash})
+            let newAdmin = response[0]
 
-            delete newUser.password
+            delete newAdmin.password
 
-            req.session.user = newUser
-            res.send(req.session.user)
+            req.session.admin = newAdmin
+            res.send(req.session.admin)
 
         } catch (error) {
             console.log('ERROR', error)
@@ -37,22 +37,22 @@ module.exports = {
             const db = req.app.get('db')
             const { email, password } = req.body
 
-            let users = await db.findUserByEmail(email)
-            let user = users[0]
+            let foundAdmin = await db.find_admin_by_email(email)
+            let admin = foundAdmin[0]
 
-            if (!user) {
+            if (!admin) {
                 return res.status(401).send('email or password incorrect')
             }
 
-            let isAuth = bcrypt.compareSync(password, user.password)
+            let isAuth = bcrypt.compareSync(password, admin.password)
 
             if (!isAuth) {
                 return res.status(401).send('email or password incorrect')
             }
 
-            delete user.password
-            req.session.user = user
-            res.send(req.session.user)
+            delete admin.password
+            req.session.admin = admin
+            res.send(req.session.admin)
 
         } catch (error) {
             console.log('ERROR', error)
@@ -65,7 +65,7 @@ module.exports = {
         res.sendStatus(200)
     },
 
-    currentUser: (req, res) => {
-        res.send(req.session.user)
+    currentAdmin: (req, res) => {
+        res.send(req.session.admin)
     }
 }

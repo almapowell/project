@@ -1,0 +1,1 @@
+SELECT video.url FROM video
