@@ -1,0 +1,35 @@
+.drophover {
+    position: relative;
+    display: inline-block;
+    z-index: 10;
+    width: 15vw;
+    height: 5vh;
+    border: none;
+}
+
+.drophover {
+    display: inline-block;
+    padding: 10px;
+    background: rgb(250, 0, 0);
+    color: white;
+    cursor: pointer;
+}
+
+.drophover:hover {
+    background: rgb(97, 7, 7)
+}
+
+.menu {
+    position: absolute;
+    display: none;
+    top: 100%;
+    left: 100%;
+    min-width: 200px;
+    background: white;
+    box-shadow: 0 3px 2px rbga(0, 0, 0, 0.3);
+    z-index: 30px;
+}
+
+.dropdown:hover .menu {
+    display: block;
+}

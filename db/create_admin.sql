@@ -1,3 +1,3 @@
-insert into admin (name, email, password)
-values (${name}, ${email}, ${hash})
+insert into admin (email, password)
+values (${email}, ${hash})
 returning *;

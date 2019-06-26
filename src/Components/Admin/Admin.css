@@ -1,0 +1,17 @@
+.admin{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.email{
+    margin-top: 60px;
+}
+
+.password{
+    margin-top: 60px;
+}
+
+.button{
+    margin-top: 60px;
+}

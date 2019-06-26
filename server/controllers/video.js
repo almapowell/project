@@ -4,7 +4,7 @@ module.exports = {
             let db = req.app.get('db')
             let films = await db.get_films()
             console.log('Here are your films', films)
-            // res.send(films)
+            res.send(films)
         } catch (error) {
             console.log('Error fetching the videos', error)
             res.status(500).send(error)
@@ -21,4 +21,6 @@ module.exports = {
             res.status(500).send(error)
         }
     }
+
+    
 }
