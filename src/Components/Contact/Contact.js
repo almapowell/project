@@ -8,7 +8,7 @@ export default class About extends Component {
         this.state = {
             name: '',
             email: '',
-            number: ''
+            phone: ''
         }
     }
 
@@ -36,11 +36,11 @@ export default class About extends Component {
                     onChange={this.handleChange}
 
                     /></p>
-                    <p>Phone Number:<br /><input type="text"
-                    name='number'
+                    <p>Phone Number:<br /><input type="number"
+                    name='phone'
                     onChange={this.handleChange}
                     /></p>
-                    <Dropdown />
+                    <Dropdown contact={this.state} />
 
                 </div>
 

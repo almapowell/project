@@ -3,12 +3,13 @@ import './Dropdown.css'
 import axios from 'axios';
 
 export default class Dropdown extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
 
         this.state = {
             selected: '',
-            bookings: []
+            bookings: {},
+            message: ''
         }
     }
 
@@ -20,6 +21,16 @@ export default class Dropdown extends Component {
         }))
     }
 
+    askQuestion = () => {
+        let { name, email, phone } = this.props.contact
+        let { message } = this.state
+        console.log(name, email, phone, message)
+        axios.post('/ask/question', { name, email, phone, message }).then(() => {
+            alert(`Thank you ${name}!!!! Your awesome.`)
+        })
+    }
+
+
     handleChange = (e) => {
         this.setState({
             selected: e.target.value
@@ -27,7 +38,7 @@ export default class Dropdown extends Component {
     }
 
     render() {
-        console.log(this.state.selected)
+        
         return (
             <div>
                 <label>What are you here for?</label><br />
@@ -61,7 +72,7 @@ export default class Dropdown extends Component {
                             </select>
                         </div>
 
-                        <p>Notes:<br /><input /></p>
+                        <p>Notes:<br/><input type="text" /></p>
 
                         <button onClick={this.createBooking} >Submit</button>
 
@@ -70,17 +81,17 @@ export default class Dropdown extends Component {
                     :
                     
                     <div>
-                        <p>What is your question?<br/><input type="text" /></p>
-                        <button>Submit</button>                    
+                        <p>What is your question?<br /><input type="text" 
+                        value={this.state.message} 
+                        onChange={(e) => this.setState({message: e.target.value})}
+                        /></p>
+                        
+                        <button onClick={this.askQuestion} >Submit</button>                    
 
                     </div>
 
 
                 ) : null}
-
-
-
-
 
 
 

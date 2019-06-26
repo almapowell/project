@@ -49,16 +49,20 @@ module.exports = {
         }
     },
 
-    // question: async (req, res) => {
-    //     try {
-    //         let db = req.app.get('db')
-    //         let { name, email, phone, message } = req.body
-    //         let question = db.ask_question()
-    //     } catch (error) {
-    //         console.log('Error posting the bookings', error)
-    //         res.status(500).send(error)
-    //     }
-    // }
+    askQuestion: async (req, res) => {
+        console.log("HIT")
+        try {
+            let db = req.app.get('db')
+            let { name, email, phone, message } = req.body
+            console.log(name, email, phone, message)
+            let question = await db.ask_question({ name, email, phone, message })
+            console.log(question)
+            res.status(200).send(question)
+        } catch (error) {
+            console.log('Error posting the bookings', error)
+            res.status(500).send(error)
+        }
+    }
 
 
 

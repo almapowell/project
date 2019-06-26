@@ -39,7 +39,7 @@
     ]
   },
   "main": "server/index.js",
-  "proxy": "https://localhost:4444",
+  "proxy": "http://localhost:4444",
   "nodemonConfig": {
     "ext": "js, sql",
     "ignore": [
