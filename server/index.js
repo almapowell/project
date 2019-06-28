@@ -2,9 +2,13 @@ require('dotenv/config')
 const express = require('express')
 const session = require('express-session')
 const massive = require('massive')
+
+// Controllers
 const authCtrl = require('./controllers/Auth')
 const videoCtrl = require('./controllers/Video')
 const contactCtrl = require('./controllers/Contact')
+const stripeCtrl = require('./controllers/Stripe')
+
 
 const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env
 
@@ -28,8 +32,9 @@ massive(CONNECTION_STRING).then(db => {
 
 
 // Videos
-app.get('/video/:id', videoCtrl.getOneFilm)
+app.get('/video/:video_id', videoCtrl.getOneFilm)
 app.get('/videos', videoCtrl.getAllFilms)
+app.post('/video', videoCtrl.createVideo)
 
 // Questions
 app.post('/ask/question', contactCtrl.askQuestion)
@@ -47,6 +52,8 @@ app.post('/auth/login', authCtrl.login)
 app.get('/auth/logout', authCtrl.logout)
 app.get('/auth/currentAdmin', authCtrl.currentAdmin)
 
+// Stripe
+app.post('/checkout', stripeCtrl.payment)
 
 
 

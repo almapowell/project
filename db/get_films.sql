@@ -1,1 +1,1 @@
-SELECT video.url FROM video
+SELECT * FROM video

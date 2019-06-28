@@ -1,2 +1,2 @@
-SELECT video.url FROM video
-WHERE video_id = $1
+SELECT * FROM video
+WHERE video_id = ${video_id};

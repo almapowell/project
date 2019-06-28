@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import './Dropdown.css'
+import React, { Component } from 'react';
+import Stripe from './Stripe'
+import './Dropdown.css';
 import axios from 'axios';
 
 export default class Dropdown extends Component {
@@ -98,16 +99,16 @@ export default class Dropdown extends Component {
 
                         <p>Notes:<br/><input type="text" value={this.state.notes}
                         onChange={(e) => this.setState({notes: e.target.value})} /></p>
-
+                        
+                        <Stripe/>
                         <button onClick={this.createBooking} >Submit</button>
-
                     </form>
                     :
                     <div>
-                        <p>What is your question?<br /><input type="text" 
+                        <p>What is your question?<br /><textarea type="text" 
                         value={this.state.message} 
                         onChange={(e) => this.setState({message: e.target.value})}
-                        /></p>
+                        ></textarea> </p>
                         
                         <button onClick={this.askQuestion} >Submit</button>                    
                         

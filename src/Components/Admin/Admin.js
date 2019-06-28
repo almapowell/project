@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import { SAVE_USER } from '../../Redux/Reducers/admin'
+import { SAVE_USER } from '../../Redux/Reducers/admin_reducer'
 import createStore from '../../Redux/store'
 import './Admin.css'
 

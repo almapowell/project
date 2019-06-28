@@ -14,8 +14,12 @@
     "react-redux": "^7.1.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
+    "react-stripe-checkout": "^2.6.3",
+    "react-toastify": "^5.3.1",
     "redux": "^4.0.1",
-    "redux-promise-middleware": "^6.1.1"
+    "redux-promise-middleware": "^6.1.1",
+    "stripe": "^7.4.0",
+    "uuid": "^3.3.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -43,8 +47,8 @@
   "nodemonConfig": {
     "ext": "js, sql",
     "ignore": [
-        "src/*",
-        "public/*"
+      "src/*",
+      "public/*"
     ]
   }
 }

@@ -25,18 +25,18 @@ export default class About extends Component {
                 <p>I would love to hear from you or answer any questions that you may have for me. Please fill out the following below and I will reply as soon as possible. Thank you!</p>
                 <div className="name" >
                     <p>Name:<br /><input type="text"
-                    name='name'
+                    name='name' required
                     onChange={this.handleChange}
                     /></p>
                 </div>
                 <div className="emailNumber" >
                     <p>Email:<br /><input type="text"
-                    name='email'
+                    name='email' required
                     onChange={this.handleChange}
 
                     /></p>
                     <p>Phone Number:<br /><input type="text"
-                    name='phone'
+                    name='phone' required
                     onChange={this.handleChange}
                     /></p>
                     <Dropdown contact={this.state} />

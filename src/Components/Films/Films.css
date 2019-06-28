@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.allfilms {
+    display: inline-block;
+    /* justify-content: center; */
+    /* flex-direction: row; */
+}
+
+.film {
+    width: 672px;
+    height: 378px;
+    margin: 40px;
+    /* text-align: center; */
+}
+
+.addUrl {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.urlInput {
+    width: 40rem;
+    height: 3rem;
+    border-radius: 10px;
+    margin: 4px;
+    padding: 5px;
+
+}
+
+.addButton {
+    width: 5rem;
+    height: 3rem;
+    margin: 4px;
+    padding: 5px;
+    border: none;
+    background-color: green;
+    border-radius: 10px;
+    color: white;
+}
+
+/* .deleteButton {
+    display: flex;
+    width: 20%;
+    height: 4px;
+    justify-content: center;
+} */
+
+
