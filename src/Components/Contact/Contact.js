@@ -19,7 +19,6 @@ export default class About extends Component {
     }
 
     render() {
-        console.log(this.state.name)
         return (
             <div>
                 <h1>Contact</h1>
@@ -36,7 +35,7 @@ export default class About extends Component {
                     onChange={this.handleChange}
 
                     /></p>
-                    <p>Phone Number:<br /><input type="number"
+                    <p>Phone Number:<br /><input type="text"
                     name='phone'
                     onChange={this.handleChange}
                     /></p>

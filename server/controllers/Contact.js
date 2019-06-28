@@ -26,20 +26,25 @@ module.exports = {
     postBooking: async (req, res) => {
         try {
             let db = req.app.get('db')
-            let { bride_groom_name, booking_date, location, budget, notes, how, name, email, phone } = req.body
-            // let newDate = new Date()
+            let { bride_groom_name, booking_id, booking_date, location, budget, notes, how, name, email, phone } = req.body 
+
+
+            // let date = new Date(booking_date.toDateString())
+
             // let date = newDate.getDate().toString()
             // let month = (newDate.getMonth()+1).toString()
             // let year = newDate.getFullYear().toString()
  
             // let postDate =  `${date} ${month} ${year}`
- 
+            // let booking_date = postDate
+            
             // let time = newDate.getHours().toString()
             // let min = newDate.getMinutes().toString()
  
             // let postTime = `${time} : ${min}`
+            
 
-            let newBooking = { bride_groom_name, booking_date, location, budget, notes, how, name, email, phone}
+            let newBooking = { bride_groom_name, booking_date, booking_id, location, budget, notes, how, name, email, phone}
             let postedBookings = await db.post_booking(newBooking)
             console.log(postedBookings)
             res.status(200).send(postedBookings)
@@ -62,11 +67,34 @@ module.exports = {
             console.log('Error posting the bookings', error)
             res.status(500).send(error)
         }
+    },
+
+    deleteQuestion: async (req, res) => {
+        console.log('Hit')
+        try {
+            let db = req.app.get('db')
+            let { question_id } = req.params
+            const questions = await db.delete_question({question_id})
+            res.status(200).send(questions)
+        } catch (error) {
+            console.log('Error deleting the question', error)
+            res.status(500).send(error)
+        }
+    },
+
+    deleteBooking: async (req, res) => {
+        console.log(typeof req.params.booking_id)
+        try {
+           let db = req.app.get('db') 
+           let { booking_id } = req.params
+           const bookings = await db.delete_booking({booking_id})
+           console.log(51516516516516, bookings)
+           res.status(200).send(bookings)
+        } catch (error) {
+            console.log('Error deleting the bookings', error)
+            res.status(500).send(error)
+        }
     }
-
-
-
-
 
 
 

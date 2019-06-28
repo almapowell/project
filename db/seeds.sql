@@ -8,7 +8,7 @@ CREATE TABLE booking (
     booking_id SERIAL PRIMARY KEY,
     name VARCHAR(50),
     email VARCHAR(100),
-    phone INT,
+    phone TEXT,
     bride_groom_name VARCHAR,
     booking_date DATE,
     location VARCHAR,
@@ -22,7 +22,7 @@ CREATE TABLE questions (
     message TEXT,
     name VARCHAR(50),
     email VARCHAR(100),
-    phone INT
+    phone TEXT
 )
 
 CREATE TABLE video (

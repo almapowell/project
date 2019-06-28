@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import { SAVE_USER } from '../../Redux/Reducers/admin'
+import createStore from '../../Redux/store'
 import './Admin.css'
 
 export default class Admin extends Component {
@@ -20,6 +22,10 @@ export default class Admin extends Component {
         }
         axios.post('/api/login', { email, password }).then(res => {
             console.log(res.data)
+            createStore.dispatch({
+                type: SAVE_USER,
+                payload: res.data
+            })
             this.props.history.push('/')
         }).catch(error => {
             console.log('Please check your entries')

@@ -9,27 +9,43 @@ export default class Dropdown extends Component {
         this.state = {
             selected: '',
             bookings: {},
-            message: ''
+            message: '',
+            bride_groom_name: '', 
+            booking_date: '', 
+            location: '', 
+            budget: '', 
+            notes: '', 
+            how: ''
         }
     }
 
     createBooking = () => {
-        let { bride_groom_name, booking_date, location, budget, notes, how, name, email, phone } = this.state
-        axios.post('/create/booking', { bride_groom_name, booking_date, location, budget, notes, how, name, email, phone })
-        .then(res => this.setState({
-            bookings: res.data
-        }))
+        let { name, email, phone } = this.props.contact
+        let { bride_groom_name, booking_date, location, budget, notes, how} = this.state
+        if (!name || !email || !phone) {
+            alert('Uncomplete entries')
+            return;
+    }
+    console.log(name, email, phone)
+        axios.post('/create/booking', { name, email, phone, bride_groom_name, booking_date, location, budget, notes, how })
+        .then(() => {
+            alert(`Thank you ${name}, I look forward to working with ${bride_groom_name}!`)
+        })
     }
 
     askQuestion = () => {
         let { name, email, phone } = this.props.contact
         let { message } = this.state
         console.log(name, email, phone, message)
+        if (!name || !email || !phone) {
+            alert('Uncomplete entries')
+            return;
+        }
         axios.post('/ask/question', { name, email, phone, message }).then(() => {
-            alert(`Thank you ${name}!!!! Your awesome.`)
+            alert(`Thank you ${name}. I will get back to you as soon as possible.`)
+            // this.props.history.push('/')
         })
     }
-
 
     handleChange = (e) => {
         this.setState({
@@ -38,7 +54,6 @@ export default class Dropdown extends Component {
     }
 
     render() {
-        
         return (
             <div>
                 <label>What are you here for?</label><br />
@@ -51,35 +66,43 @@ export default class Dropdown extends Component {
                 {this.state.selected !== '' ? (this.state.selected === 'booking' ?
 
                     <form>
-                        <p>Bride and Groom Name:<br /><input /></p>
 
-                        <p>Date:<br /><input type="date" /></p>
-
-                        <p>Location:<br /><input  /></p>
-
-                        <p>Price:<br /><input placeholder="What is your budget?" /></p>
-
-
+                        <p>Bride and Groom Name:<br /><input
+                        onChange={(e) => this.setState({bride_groom_name: e.target.value})}
+                        value={this.state.bride_groom_name} /></p>
+                        
+                        <p>Date:<br /><input 
+                        onChange={(e) => this.setState({booking_date: e.target.value})}
+                        value={this.state.booking_date} type="date" /></p>
+                        
+                        <p>Location:<br /><input 
+                        onChange={(e) => this.setState({location: e.target.value})}
+                        value={this.state.location} type="text" /></p>
+                       
+                       <p>Price:<br /><input
+                        onChange={(e) => this.setState({budget: e.target.value})}
+                        placeholder="What is your budget?"
+                        value={this.state.budget} type="number" /></p>
+                        
                         <div>
                             <label>How did you hear about me?</label><br />
-                            <select>
+                            <select onChange={(e) => {this.setState({how: e.target.value})}} >
                                 <option value='' >-</option>
-                                <option value='google' >Google</option>
-                                <option value='facebook' >Facebook</option>
-                                <option value='instagram' >Instagram</option>
-                                <option value='refer' >Friend/Family Member</option>
-                                <option value='other' >Other</option>
+                                <option value='Google' >Google</option>
+                                <option value='Gacebook' >Facebook</option>
+                                <option value='Instagram' >Instagram</option>
+                                <option value='Refer' >Friend/Family Member</option>
+                                <option value='Other' >Other</option>
                             </select>
                         </div>
 
-                        <p>Notes:<br/><input type="text" /></p>
+                        <p>Notes:<br/><input type="text" value={this.state.notes}
+                        onChange={(e) => this.setState({notes: e.target.value})} /></p>
 
                         <button onClick={this.createBooking} >Submit</button>
 
                     </form>
-
                     :
-                    
                     <div>
                         <p>What is your question?<br /><input type="text" 
                         value={this.state.message} 
@@ -87,7 +110,7 @@ export default class Dropdown extends Component {
                         /></p>
                         
                         <button onClick={this.askQuestion} >Submit</button>                    
-
+                        
                     </div>
 
 
