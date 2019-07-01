@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+
+toast.configure();
 
 export default class About extends Component {
     constructor() {
@@ -26,9 +29,18 @@ export default class About extends Component {
             this.setState({
                 bookings: res.data
             })
+            toast.error('BOOKING DATE DELETED')
         })
     }
 
+    updateBooking = (booking_id) => {
+        console.log(booking_id)
+        axios.put(`/update/booking/${booking_id}`, ).then(res => {
+            this.setState({
+                bookings: res.data
+            })
+        })
+    }
 
     render() {
         // console.log(this.state.bookings)
@@ -44,6 +56,7 @@ export default class About extends Component {
                     <h1>Reference: {info.how}</h1>
                     <h1>Notes: {info.notes}</h1>
                     <button onClick={() => this.handleDelete(info.booking_id)} >Delete</button>
+                    <button onClick={() => this.updateBooking(info.booking_id)} >Edit</button>
                 </div>
             )
         })

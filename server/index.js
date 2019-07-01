@@ -35,6 +35,7 @@ massive(CONNECTION_STRING).then(db => {
 app.get('/video/:video_id', videoCtrl.getOneFilm)
 app.get('/videos', videoCtrl.getAllFilms)
 app.post('/video', videoCtrl.createVideo)
+app.delete('/delete/video/:video_id', videoCtrl.deleteVideo)
 
 // Questions
 app.post('/ask/question', contactCtrl.askQuestion)
@@ -45,6 +46,7 @@ app.delete('/delete/question/:question_id', contactCtrl.deleteQuestion)
 app.get('/get/bookings', contactCtrl.getBooking)
 app.post('/create/booking', contactCtrl.postBooking)
 app.delete('/delete/booking/:booking_id', contactCtrl.deleteBooking)
+app.put('/update/booking/:booking_id', contactCtrl.updateBooking)
 
 // Authentication
 app.post('/auth/register', authCtrl.register)

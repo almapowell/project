@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './Films.css'
+import './Films.css';
+import { toast } from 'react-toastify';
+
+toast.configure();
 
 export default class About extends Component {
     constructor() {
@@ -30,7 +33,10 @@ export default class About extends Component {
             this.setState({
                 films: res.data
             })
-            alert('Video Added')
+            toast.success('Video Added')
+        })
+        this.setState({
+            url: ''
         })
         // if (!url) {
         // alert('Empty input')
@@ -38,6 +44,14 @@ export default class About extends Component {
         // }
     }
 
+    deleteFilm = (video_id) => {
+        axios.delete(`/delete/video/${video_id}`).then(res => {
+            this.setState({
+                films: res.data
+            })
+            toast.error('VIDEO DELETED')
+        })
+    }
 
     render() {
         console.log(this.state.films)
@@ -45,7 +59,7 @@ export default class About extends Component {
             return (
                 <div key={film.video_id}>
                     <iframe className="film" title={film.video_id} src={film.url} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" ></iframe>
-                    <button className="deleteButton">Delete</button>
+                    <button onClick={() => this.deleteFilm(film.video_id)} className="deleteButton">Delete</button>
                 </div>
             )
         })
@@ -60,8 +74,8 @@ export default class About extends Component {
                     <input className="urlInput" placeholder="Add URL"
                         onChange={(e) => this.setState({ url: e.target.value })}
                         value={this.state.url} type="text" />
-                </div>
                     <button className="addButton" onClick={() => this.postFilm()} >Add</button>
+                </div>
 
             </div>
         )

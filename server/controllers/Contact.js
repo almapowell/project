@@ -94,6 +94,21 @@ module.exports = {
             console.log('Error deleting the bookings', error)
             res.status(500).send(error)
         }
+    },
+
+    updateBooking: async (req, res) => {
+        console.log('Hit back end')
+        try {
+            let db = req.app.get('db')
+            let { name, email, phone, booking_date, location, notes } = req.body
+            let { booking_id } = req.params
+
+            let editedBooking = await db.update_booking({ booking_id, name, email, phone, booking_date, location, notes })
+            res.status(200).send(editedBooking)
+        } catch (error) {
+            console.log('Error updating the bookings', error)
+            res.status(500).send(error)
+        }
     }
 
 

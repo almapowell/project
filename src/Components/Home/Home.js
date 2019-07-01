@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+
+toast.configure();
 // import { Link } from 'react-router-dom'
 
 export default class Home extends Component {
@@ -27,6 +30,7 @@ export default class Home extends Component {
             this.setState({
                 questions: res.data
             })
+            toast.error('QUESTION DELETED')
         })
     }
 

@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import Stripe from './Stripe'
 import './Dropdown.css';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+
+toast.configure();
+
 
 export default class Dropdown extends Component {
     constructor(props) {
@@ -24,13 +28,13 @@ export default class Dropdown extends Component {
         let { name, email, phone } = this.props.contact
         let { bride_groom_name, booking_date, location, budget, notes, how} = this.state
         if (!name || !email || !phone) {
-            alert('Uncomplete entries')
+            toast.error('Uncomplete entries')
             return;
     }
     console.log(name, email, phone)
         axios.post('/create/booking', { name, email, phone, bride_groom_name, booking_date, location, budget, notes, how })
         .then(() => {
-            alert(`Thank you ${name}, I look forward to working with ${bride_groom_name}!`)
+            toast.success(`Thank you ${name}, I look forward to working with ${bride_groom_name}!`)
         })
     }
 
@@ -39,11 +43,11 @@ export default class Dropdown extends Component {
         let { message } = this.state
         console.log(name, email, phone, message)
         if (!name || !email || !phone) {
-            alert('Uncomplete entries')
+            toast.error('Uncomplete entries')
             return;
         }
         axios.post('/ask/question', { name, email, phone, message }).then(() => {
-            alert(`Thank you ${name}. I will get back to you as soon as possible.`)
+            toast.success(`Thank you ${name}. I will get back to you as soon as possible.`)
             // this.props.history.push('/')
         })
     }

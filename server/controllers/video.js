@@ -35,8 +35,18 @@ module.exports = {
             console.log('Error creating video', error)
             res.status(500).send(error)
         }
-    }
+    },
     // ****
 
-    
+    deleteVideo: async (req, res) => {
+        try {
+            let db = req.app.get('db')
+            let { video_id } = req.params
+            const videos = await db.delete_video({video_id})
+            res.status(200).send(videos)
+        } catch (error) {
+            console.log('Error creating video', error)
+            res.status(500).send(error)
+        }
+    }
 }
