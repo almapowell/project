@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { connect } from 'react-redux';
 
 toast.configure();
 // import { Link } from 'react-router-dom'
 
-export default class Home extends Component {
+class Home extends Component {
     constructor() {
         super() 
 
@@ -17,7 +18,6 @@ export default class Home extends Component {
     componentDidMount() {
         let { questions } = this.state
         axios.get('/get/questions', { questions }).then(res => {
-            console.log(res)
             this.setState({
                 questions: res.data
             })
@@ -25,7 +25,6 @@ export default class Home extends Component {
     }
     
     handleDelete = question_id => {
-        console.log("DELETED!")
         axios.delete(`/delete/question/${question_id}`).then(res => {
             this.setState({
                 questions: res.data
@@ -36,7 +35,6 @@ export default class Home extends Component {
 
 
     render() {
-        console.log(this.state.questions)
         const mappedQuestions = this.state.questions.map(question => {
             return (
                 <div key={question.question_id} >
@@ -51,8 +49,21 @@ export default class Home extends Component {
         })
         return (
             <div>
+
                 {mappedQuestions}
             </div>
         )
     }
 }
+
+function mapStateToProps(reduxState) {
+    return {
+         admin_id: reduxState.admin_id,
+         email: reduxState.email
+    }
+}
+ 
+//mapstatetoprops => returns an object
+//connect puts these properties on the local component's props
+//connect takes in two arguments :1. it puts stateful items on to local component,2. it puts action creators (both have to be an object)
+export default connect(mapStateToProps)(Home)

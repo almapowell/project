@@ -10,12 +10,6 @@
     /* flex-direction: row; */
 }
 
-.film {
-    width: 1008px;
-    height: 567px;
-    margin: 40px;
-    /* text-align: center; */
-}
 
 .addUrl {
     display: flex;
@@ -49,5 +43,52 @@
     height: 4px;
     justify-content: center;
 } */
+
+.film {
+    width: 71vw;
+    height: 79vh;
+    margin: 30px auto;
+    /* display: block; */
+    /* margin: 180px; */
+    /* text-align: center; */
+}
+
+@media screen and (max-width: 1750px) {
+    .film {
+        margin: 160px;
+    }
+}
+
+
+@media screen and (max-width: 1500px) {
+    .film {
+        margin: 140px;
+    }
+}
+
+@media screen and (max-width: 1250px) {
+    .film {
+        margin: 120px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .film {
+        margin: 100px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .film {
+        margin: 50px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .film {
+        margin: 30px;
+    }
+}
+
 
 

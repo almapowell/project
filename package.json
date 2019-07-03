@@ -18,6 +18,7 @@
     "react-toastify": "^5.3.1",
     "redux": "^4.0.1",
     "redux-promise-middleware": "^6.1.1",
+    "sass": "^1.22.2",
     "stripe": "^7.4.0",
     "uuid": "^3.3.2"
   },

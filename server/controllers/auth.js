@@ -34,7 +34,7 @@ module.exports = {
     },
 
     login: async (req, res) => {
-
+        console.log('Back End')
         try {
             const db = req.app.get('db')
             const { email, password } = req.body
@@ -54,6 +54,7 @@ module.exports = {
 
             delete admin.password
             req.session.admin = admin
+            console.log(req.session.admin)
             res.send(req.session.admin)
 
         } catch (error) {
@@ -68,6 +69,7 @@ module.exports = {
     },
 
     currentAdmin: (req, res) => {
+        console.log(req)
         res.send(req.session.admin)
     }
 }

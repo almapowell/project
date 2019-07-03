@@ -6,15 +6,15 @@ import * as serviceWorker from './serviceWorker';
 import { HashRouter as Router } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css';
 
-// import { Provider } from 'react-redux'
-// import store from './Redux/store'
+import { Provider } from 'react-redux'
+import store from './Redux/store'
 
 ReactDOM.render(
-    // <Provider store={store}>
+    <Provider store={store}>
         <Router>
             <App />
         </Router>
-    // </Provider> 
+    </Provider> 
     , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

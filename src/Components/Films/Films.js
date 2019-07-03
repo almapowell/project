@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './Films.css';
+import { loggedIn } from '../../Redux/Reducers/index'
+import { connect } from 'react-redux';
 import { toast } from 'react-toastify';
 
 toast.configure();
 
-export default class About extends Component {
+export default class Films extends Component {
     constructor() {
         super()
 
@@ -18,8 +20,8 @@ export default class About extends Component {
 
     componentDidMount() {
         let { films } = this.state
+        
         axios.get('/videos', { films }).then(res => {
-            console.log('Im here')
             this.setState({
                 films: res.data
             })
@@ -28,7 +30,6 @@ export default class About extends Component {
 
     postFilm = () => {
         let { url } = this.state
-        console.log(url)
         axios.post('/video', { url }).then(res => {
             this.setState({
                 films: res.data
@@ -54,7 +55,6 @@ export default class About extends Component {
     }
 
     render() {
-        console.log(this.state.films)
         const mappedFilms = this.state.films.map(film => {
             return (
                 <div key={film.video_id}>
@@ -81,5 +81,6 @@ export default class About extends Component {
         )
     }
 }
+
 
 
