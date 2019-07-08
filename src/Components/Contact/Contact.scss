@@ -1,0 +1,94 @@
+@import "../SASS/extends";
+@import "../SASS/mixin";
+
+* {
+    @extend %all;
+}
+
+.contactLabel {
+    font-family: $cursive;
+    font-size: 50px;
+    .Clabel {
+        @extend %mainLabel;
+    }
+    .contactP {
+        margin: 50px 100px;
+        font-size: 40px;
+        text-indent: 2.0em;
+        font-family: $plain;
+    }
+
+    .grid {
+        @include flexCenter();
+        margin-bottom: 100px;
+        
+        
+        .firstInfo {
+            @extend %formLayout;
+            font-size: 30px;
+            box-shadow: 0 0 50px 0 black;
+            border-radius: 15px;
+            width: 800px;
+            min-height: 20vh;
+            // margin: 100px;
+
+            padding: 1em;
+            background: #000000;
+            padding: 30px;
+            color: white;
+
+            @media screen and (max-width: 900px) {
+                font-size: 20px;
+            }
+
+            .contactInputs {
+                outline: none;
+                @extend %contactInput;
+            }
+            .Cname {
+                // grid-column: 1/2;
+    
+
+            }
+
+            .Cemail {
+                // grid-column: 3/4;
+
+            }
+
+            .Cdropdown {
+                // border: 2px solid black;
+                grid-column: 1/4;
+            }
+        }
+    }
+}
+    
+
+
+.BandQ {
+    @extend %formLayout;
+    padding: 30px;
+    display: grid;
+    // align-items: center;
+    grid-template-columns: repeat(3, 2fr);
+    grid-column-gap: 1em;
+    grid-auto-rows: minmax(100px, auto);
+    justify-items: center;
+}
+
+@media screen and (max-width: 1300px) {
+    .contactLabel {
+        font-size: 40px;
+    }
+}
+
+
+@media screen and (max-width: 1000px) {
+    .contactLabel {
+        font-size: 30px;
+    }
+}
+
+
+

@@ -1,69 +1,24 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { toast } from 'react-toastify';
-import { connect } from 'react-redux';
+import './Home.scss'
 
-toast.configure();
-// import { Link } from 'react-router-dom'
-
-class Home extends Component {
-    constructor() {
-        super() 
+export default class Home extends Component {
+    constructor(props) {
+        super(props);
 
         this.state = {
-            questions: []
+            videoURL: 'http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_1mb.mp4'
         }
-    }
-
-    componentDidMount() {
-        let { questions } = this.state
-        axios.get('/get/questions', { questions }).then(res => {
-            this.setState({
-                questions: res.data
-            })
-        })
-    }
-    
-    handleDelete = question_id => {
-        axios.delete(`/delete/question/${question_id}`).then(res => {
-            this.setState({
-                questions: res.data
-            })
-            toast.error('QUESTION DELETED')
-        })
     }
 
 
     render() {
-        const mappedQuestions = this.state.questions.map(question => {
-            return (
-                <div key={question.question_id} >
-                    <h2>Name: {question.name}</h2>
-                    <h2>Phone Number:{question.phone}</h2>
-                    <h3>Email: {question.email}</h3>
-                    <p>{question.message}</p>
-                    <button onClick={() => this.handleDelete(question.question_id)} >Delete</button>
-                    <button>Reply</button>
-                </div>
-            )
-        })
         return (
-            <div>
-
-                {mappedQuestions}
+            <div className="videoContainer">
+                <h1 className="Hlabel">Home</h1>
+                <iframe title="ok" className="singleVideo" src="https://www.youtube.com/embed/wSr7pWjHY-0?autoplay=1"></iframe>
+                {/* <iframe class="embed-responsive-item"id="ytplayer" type="text/html" width="640" height="360" src=""
+      frameborder="0" allowfullscreen></iframe> */}
             </div>
         )
     }
 }
-
-function mapStateToProps(reduxState) {
-    return {
-         admin_id: reduxState.admin_id,
-         email: reduxState.email
-    }
-}
- 
-//mapstatetoprops => returns an object
-//connect puts these properties on the local component's props
-//connect takes in two arguments :1. it puts stateful items on to local component,2. it puts action creators (both have to be an object)
-export default connect(mapStateToProps)(Home)

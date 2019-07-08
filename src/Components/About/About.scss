@@ -1,0 +1,36 @@
+@import "../SASS/extends";
+@import "../SASS/mixin";
+@import "../SASS/variable";
+
+.Alabel {
+    @extend %mainLabel;
+}
+
+
+// .container {
+//     @include flexCenter();
+
+// .mainParagraph {
+//     text-indent: 2.0em;
+//     font-family: $plain;
+//     font-size: 25px;
+//     // max-width: 60vw;
+//     // margin: auto;
+//     // word-wrap: normal;
+
+
+//     line-height: 1.6; 
+//     // font-family: Helvetica;
+//     // text-align: justify;
+//     // margin: 0;
+//     margin: 0 0 0 10px; 
+//     // font-size: 14px;
+// }
+
+// .image {
+//     height: 500px;
+//     width: 500px;
+//     // float: left;
+//     // align-self: baseline;
+// }
+// }

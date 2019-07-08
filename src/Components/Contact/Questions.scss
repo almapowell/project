@@ -1,0 +1,66 @@
+@import "../SASS/extends";
+@import "../SASS/mixin";
+@import "../SASS/variable";
+
+* {
+    @extend %all;
+}
+
+.allQuestions {
+    @include flexCenter();
+    @include questionFormat();
+    justify-content: flex-start;
+    padding: 30px;
+    position: relative;
+    font-family: $cursive;
+
+    .Qname{
+        margin: $margin;
+        z-index: 1;
+        width: 100%;
+        color: white;
+        word-wrap: break-word;
+    }
+    .Qphone{
+        z-index: 1;
+        color: white;
+        width: 100%;
+        word-wrap: break-word;
+        margin: $margin;
+    }
+    .Qemail{
+        z-index: 1;
+        width: 100%;
+        color: white;
+        word-wrap: break-word;
+        margin: $margin;
+    }
+    .Qquestion{
+        margin: $margin;
+        color: white;
+        z-index: 1;
+        word-wrap: break-word;
+    }
+    .QdeleteBtn{
+        margin: $margin;
+        @extend %delete;
+        color: white;
+        box-shadow: 3px 4px white;
+        background-color: $tempColor2;
+        font-family: $cursive;
+        font-size: 30px;
+    }
+    .commentIcon {
+        @extend %iconPositioning;
+    }
+    
+}
+
+.qLabel {
+    @include flexCenter();
+    margin: 30px auto;
+    font-family: $cursive;
+    font-size: 80px;
+
+}
+

@@ -1,0 +1,83 @@
+@import "../SASS/extends";
+@import "../SASS/mixin";
+@import "../SASS/variable";
+
+* {
+    @extend %all;
+}
+
+.mainSelector {
+    width: 20vw;
+    height: 3.5vh;
+    // background-color: grey;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    // font-family: $plain;
+    // font-weight: bold;
+}
+
+.DropdownGrid {
+  
+    .mainDropdownLabel {
+        display: flex;
+        justify-content: center;
+        // border: 2px solid black;
+        height: 100px;
+        width: 100%;
+        // font-size: 15px;
+        outline: none;
+    }
+
+    .placeholder {
+        font-size: 20px;
+    }
+}
+
+
+
+.question {
+    @extend %formLayout;
+    .ptagQ {
+        margin: auto;
+        grid-column: 1/4;
+        
+        // grid-row: 
+    }
+
+    .textarea {
+        margin: auto;
+        grid-column: 1/4;
+        width: 30vw;
+        height: 8vw;
+        border-radius: 15px;
+    }
+    
+    
+   
+}
+
+.submitBtn {
+    margin: auto;
+    grid-column: 3/4;
+    // width: 30vw;
+    // height: 8vw;
+    @extend %delete;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 20px 0 white;
+    color: black;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.contactInputs {
+    @extend %contactInput;
+}
+
+.allBefores {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    align-items: center;
+}

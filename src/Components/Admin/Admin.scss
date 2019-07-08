@@ -1,0 +1,58 @@
+@import "../SASS/extends";
+@import "../SASS/mixin";
+
+* {
+    @extend %all;
+    // background-color: #d3d1d1;
+}
+
+.adminScreen {
+    @include flexCenter();
+
+}
+
+
+.admin{
+    flex-direction: column;
+}
+
+
+
+.email{
+    @include adminInputs();
+    margin-top: 60px;
+
+}
+
+.password{
+    @include adminInputs();
+    margin-top: 60px;
+    
+}
+
+.login {
+    @extend %logging;
+    background-color: rgb(20, 180, 28);
+}
+
+.logout {
+    @extend %logging;  
+    background-color: rgb(223, 30, 30);
+}
+
+.login:hover{
+    background-color: rgb(27, 124, 40);
+    cursor: pointer;
+}
+
+.logout:hover{
+    background-color: rgb(146, 21, 29);
+    cursor: pointer;
+}
+
+.adminBtns {
+    border: none;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-around
+}

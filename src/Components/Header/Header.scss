@@ -1,0 +1,31 @@
+@import '../SASS/variable';
+@import '../SASS/extends';
+
+.header{
+    display: flex;
+    justify-content: center;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: $header;
+    height: 60px;
+    // border-bottom: 
+}
+
+.home{
+    @extend %navbar;
+}
+
+.about{
+    @extend %navbar;
+}
+
+.films{
+    @extend %navbar;
+}
+
+.contact{
+    @extend %navbar;
+}

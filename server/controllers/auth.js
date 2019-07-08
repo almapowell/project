@@ -65,11 +65,11 @@ module.exports = {
 
     logout: (req, res) => {
         req.session.destroy()
-        res.sendStatus(200)
+        res.status(200).send('Session Destroyed')
     },
 
     currentAdmin: (req, res) => {
-        console.log(req)
+        console.log(6551515, req.session.admin)
         res.send(req.session.admin)
     }
 }

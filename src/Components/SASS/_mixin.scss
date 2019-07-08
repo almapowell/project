@@ -1,0 +1,41 @@
+@mixin adminInputs() {
+    width: 25vw;
+    height: 5vh;
+    margin: 20px;
+    box-shadow: 5px 8px #888888;
+    border-radius: 8px;
+    border: 3px solid black;
+}
+
+@mixin flexCenter() {
+    display: flex;
+    justify-content: center;
+}
+
+@mixin questionFormat() {
+    align-items: flex-start;
+    flex-direction: column;
+    height: 50vh;
+    max-width: 50vw;
+    
+    // width: 50vw;
+    margin: 60px auto;
+    border: 8px solid $tempColor2;
+    // box-shadow: 8px 15px #10b0d0;
+    // z-index: -5;
+    border-radius: 10px;
+    background-color: $tempColor1;
+}
+
+@mixin bookingFormat() {
+    align-items: flex-start;
+    flex-direction: column;
+    min-height: 50vh;
+    width: 50vw;
+    margin: 60px auto;
+    border: 8px solid $darkPurple;
+    // box-shadow: 8px 15px #10b0d0;
+    // z-index: -5;
+    border-radius: 10px;
+    background-color: $lightPurple;
+}

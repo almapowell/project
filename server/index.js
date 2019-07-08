@@ -1,18 +1,21 @@
 require('dotenv/config')
-const express = require('express')
-const session = require('express-session')
-const massive = require('massive')
+const express = require('express');
+const session = require('express-session');
+const massive = require('massive');
 
 // Controllers
-const authCtrl = require('./controllers/Auth')
-const videoCtrl = require('./controllers/Video')
-const contactCtrl = require('./controllers/Contact')
-const stripeCtrl = require('./controllers/Stripe')
+const authCtrl = require('./controllers/Auth');
+const videoCtrl = require('./controllers/Video');
+const contactCtrl = require('./controllers/Contact');
+const stripeCtrl = require('./controllers/Stripe');
 
 
 const { SERVER_PORT, SESSION_SECRET, CONNECTION_STRING } = process.env
 
 const app = express()
+
+app.use( express.static( `${__dirname}/../build` ) );
+
 app.use(express.json())
 
 app.use(session({

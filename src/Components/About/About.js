@@ -1,118 +1,15 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { toast } from 'react-toastify';
-
-toast.configure();
+import './About.scss'
 
 export default class About extends Component {
-    constructor() {
-        super() 
-
-        this.state = {
-            edit: false,
-            bookings: [],
-            booking_id: '',
-            name: '',
-            bride_groom_name: '',
-            email: '',
-            phone: '',
-            booking_date: '',
-            location: '',
-            notes: '',
-            budget: '',
-            how: ''
-        }
-    }
-
-    componentDidMount() {
-        let { bookings } = this.state
-        axios.get('/get/bookings', { bookings }).then(res => {
-            // console.log(res)
-            this.setState({
-                bookings: res.data
-            })
-        })
-    }
-
-    handleDelete = (booking_id) => {
-        console.log(booking_id)
-        axios.delete(`/delete/booking/${booking_id}`).then(res => {
-            this.setState({
-                bookings: res.data
-            })
-            toast.error('BOOKING DATE DELETED')
-        })
-    }
-
-    updateBooking = (booking_id) => {
-        let { name, email, phone, booking_date, location, notes } = this.state
-        console.log(booking_id)
-        axios.put(`/update/booking/${booking_id}`, { name, email, phone, booking_date, location, notes }).then(res => {
-            this.setState({
-                bookings: res.data,
-                edit: false
-            })
-            toast('Information updated!')
-        })
-    }
-
-    toggleEdit = (info) => {
-        this.setState({
-            edit: !this.state.edit,
-            ...info
-        })
-    }
-
-    handleChange = (e) => {
-        let {name, value} = e.target
-        this.setState({
-            [name]: value
-        })
-    }
-
     render() {
-        // console.log(this.state.bookings)
-        const mappedBookings = this.state.bookings.map(info => {
-            return(
-                <div key={info.booking_id}>
-                    <h1>Names: {info.bride_groom_name}</h1>
-                    <h3>Phone Number: {info.phone}</h3>
-                    <h3>Email: {info.email}</h3>
-                    <h1>Location: {info.location}</h1>
-                    <h1>Date: {info.booking_date}</h1>
-                    <h1>Budget: ${info.budget}</h1>
-                    <h1>Reference: {info.how}</h1>
-                    <h1>Notes: {info.notes}</h1>
-                    <button className="deleteBooking" onClick={() => this.handleDelete(info.booking_id)} >Delete</button>
-                    <button className="editBooking" onClick={() => this.toggleEdit(info)} >Edit</button>
-                </div>
-            )
-        })
-        let { bride_groom_name, email, phone, booking_date, location, notes, budget, how, booking_id } = this.state
         return (
-            <div>
-                
-                <h1>About</h1>
-                { this.state.edit 
-                ?
-                
-                <div>
-                <h1>Names: {bride_groom_name}</h1>
-                <h3>Phone Number: <input type="text" value={phone} name="phone" onChange={this.handleChange} /></h3>
-                <h3>Email: <input type="text" value={email} name="email" onChange={this.handleChange} /></h3>
-                <h1>Location: <input type="text" value={location} name="location" onChange={this.handleChange} /></h1>
-                <h1>Date: <input type="date" value={booking_date} name="booking_date" onChange={this.handleChange} /></h1>
-                <h1>Budget: ${budget}</h1>
-                <h1>Reference: {how}</h1>
-                <h1>Notes: <input type="text" value={notes} name="notes" onChange={this.handleChange} /></h1>
-                <button className="deleteBooking" onClick={() => this.handleDelete(booking_id)} >Delete</button>
-                <button className="submitBooking" onClick={() => this.updateBooking(booking_id)} >Submit</button>
+            <div className="aboutPage">
+                <h1 className="Alabel">About</h1>
+                <div className="mainParagraph">
+                    {/* <p>Hi there! My name is Braiden Powell and I am a filmaker/cinematographer and I am based out of Utah. I fell in love with filming back in 2016 from a trip to Europe. I loved seeing different parts of the Earth and wanted a way to document special moments in life. I first filmed my friends wedding and loved seeing two people celebrate their special day, and letting me be apart of it. My goal is to capture and document each and every couple's story and create a timeless video unique to every story! </p> */}
                 </div>
-                :
-                mappedBookings
-               }
-        
-               
+                    <img className="image" src="https://gm1.ggpht.com/Hipavb69jDNV2JPEKQBHU9pRqNGEEVmYARovAIOE-aBr66pZI3Tejvpu0MDO2G911IMaPmlx43JkT6il1X36Ht7bju-QD6_X6T6Sf287IudxY_NY1OUHkIRjdFjJbmPc_5exWmtm2om_mngsVIdbqRk2bTB_c10-hMZWKVamP-l_Jq97uOXR1VeeYvACHBTb6o4m_BXQxInZTZs5KzB3PUUucYFSYVGX6tVBBeAl_31eIPn7zfHVzHZ5NVELJuL9B4FK6luvfbYHuC2UtsH9bbiXFA6-5cePkAwo6fs4_meYswoh9UDUFeNw6S3ypqjYdx38Fgtciikh5uCFzCfnj2kWmW0CH1nIVhQldUHdyFT22qUFj6kqMVc-wU5jOK_w5R2nAuM_erMfDam2M6TilSIRIS0cGemFv_uEO729saCz8TDmawU-u0ebhawP9v1Fgy8yrCJ43E9fhXcHGGHt9VBsLBnzibSyH_eyuLKLHIzrOuBFAg3Jwg7ibue--Lu47eFwED98R8L1Hju34-l6GxAJwLBvI-2ICqApS_q0qqMGqIWf6LttXkjnVGKN0R6YDCNiBnbceSVbw6szWSu3vWCF83osqqIl8v9X_49xfLDygczL5J0GSqg5jQU2kc2ou77OHHFOSceNg4yKR_rArJPtWK6XuQOW7aZESEKi6KJEAUkIgW-4Iqxgxqcyn1q6k2pze20JO9twvkwLHKZDsJfy9aIzd1ukxLDUSA=s0-l75-ft-l75-ft" alt="" />
             </div>
         )
     }

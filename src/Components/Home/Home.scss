@@ -1,0 +1,35 @@
+@import "../SASS/extends";
+@import "../SASS/mixin";
+@import "../SASS/variable";
+
+* {
+    @extend %all;
+}
+
+.videoContainer {
+    // @include flexCenter();
+
+    .singleVideo {
+    margin: 100px auto;
+    width: 100%;
+    height: 75vh;
+    border: 1px solid black;
+}
+}
+
+
+.Hlabel {
+    @extend %mainLabel;
+}
+
+// #background-video{
+
+//     height: 100%;
+//     width: 100%;
+//     float: left;
+//     top: 0;
+//     padding: none;
+//     position: fixed; /* optional depending on what you want to do in your app */
+    
+    
+//     }

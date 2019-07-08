@@ -8,13 +8,6 @@ import { connect } from 'react-redux'
 
 
 class App extends React.Component {
-  constructor() {
-    super()
-
-    this.state = {
-
-    }
-  }
 
   componentDidMount() {
     // if(!this.props.admin_id){
@@ -42,9 +35,7 @@ function mapStateToProps(reduxState) {
   }
 }
 
-let mapDispatchToProps = {
- loggedIn 
-}
+let mapDispatchToProps = { loggedIn }
 
 
 export default connect(mapStateToProps, mapDispatchToProps )(App)

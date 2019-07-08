@@ -1,0 +1,128 @@
+@import "../SASS/extends";
+@import "../SASS/mixin";
+@import "../SASS/variable";
+
+* {
+    @extend %all;
+}
+
+.allBookings {
+    @include bookingFormat();
+    @include flexCenter();
+    justify-content: flex-start;
+    padding: 30px;
+    position: relative;
+    // z-index: -12;
+
+
+    .Bnames {
+        margin: 5px;
+        font-family: $cursive;
+        z-index: 1;
+        width: 100%;
+        word-wrap: break-word;
+    }
+
+    .Bphone {
+        margin: 5px;
+        z-index: 1;
+        font-family: $cursive;
+        width: 100%;
+        word-wrap: break-word;
+    }
+
+    .Bemail {
+        z-index: 1;
+        margin: 5px;
+        font-family: $cursive;
+        width: 100%;
+        word-wrap: break-word;
+    }
+
+    .Blocation {
+        z-index: 1;
+        margin: 5px;
+        font-family: $cursive;
+        width: 100%;
+        word-wrap: break-word;
+    }
+
+    .Bdate {
+        z-index: 1;
+        margin: 5px;
+        font-family: $cursive;
+        width: 100%;
+        word-wrap: break-word;
+    }
+
+    .Bprice {
+        z-index: 1;
+        margin: 5px;
+        font-family: $cursive;
+        width: 100%;
+        word-wrap: break-word;
+    }
+
+    .Bhow {
+        z-index: 1;
+        margin: 5px;
+        font-family: $cursive;
+        width: 100%;
+        word-wrap: break-word;
+    }
+
+    .Bnotes {
+        z-index: 1;
+        margin: 5px;
+        font-family: $cursive;
+        width: 100%;
+        word-wrap: break-word;
+    }
+
+    .Bbuttons {
+        margin: $margin;
+        z-index: 5px;
+    }
+
+
+.BdeleteBooking {
+    @extend %delete;
+    background-color: $darkPurple;
+    font-family: $cursive;
+    color: white;
+    font-size: 30px;
+}
+
+.BeditBooking {
+    @extend %delete;
+    background-color: $darkPurple;
+    font-family: $cursive;
+    color: white;
+    font-size: 30px;
+}
+
+.BsubmitBooking {
+    @extend %delete;
+    background-color: $darkPurple;
+    font-family: $cursive;
+    color: white;
+    font-size: 30px;
+}
+
+.bookingIcon {
+    @extend %iconPositioning;
+    z-index: 1;
+}
+}
+
+.bLable {
+    @include flexCenter();
+    font-family: $cursive;
+    font-size: 80px;
+    margin: 30px auto;
+}
+
+
+.contactInputs {
+    @extend %contactInput;
+}

@@ -1,3 +1,5 @@
+const { TWILIO_ACCOUNT_SECRET_ID, TWILIO_AUTH_TOKEN, PERSONAL_PHONE_NUMBER, TWILIO_PHONE_NUMBER } = process.env
+
 module.exports = {
     getQuestions: async (req, res) => {
         try {
@@ -25,26 +27,45 @@ module.exports = {
 
     postBooking: async (req, res) => {
         try {
+            const accountSid = TWILIO_ACCOUNT_SECRET_ID;
+            const authToken = TWILIO_AUTH_TOKEN;
+            const client = require('twilio')(accountSid, authToken);
+
             let db = req.app.get('db')
-            let { bride_groom_name, booking_id, booking_date, location, budget, notes, how, name, email, phone } = req.body 
+            let { bride_groom_name, booking_id, booking_date, location, budget, notes, how, name, email, phone } = req.body
 
-
+            client.messages
+                .create({
+                    body: 
+                    `A date has been booked:
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Bride&Groom Names: ${bride_groom_name} 
+Date: ${booking_date} 
+Location: ${location} 
+Budget: ${budget} 
+Notes: ${notes} 
+Reference: ${how}`,
+                    from: TWILIO_PHONE_NUMBER,
+                    to: PERSONAL_PHONE_NUMBER
+                })
             // let date = new Date(booking_date.toDateString())
 
             // let date = newDate.getDate().toString()
             // let month = (newDate.getMonth()+1).toString()
             // let year = newDate.getFullYear().toString()
- 
+
             // let postDate =  `${date} ${month} ${year}`
             // let booking_date = postDate
-            
+
             // let time = newDate.getHours().toString()
             // let min = newDate.getMinutes().toString()
- 
-            // let postTime = `${time} : ${min}`
-            
 
-            let newBooking = { bride_groom_name, booking_date, booking_id, location, budget, notes, how, name, email, phone}
+            // let postTime = `${time} : ${min}`
+
+
+            let newBooking = { bride_groom_name, booking_date, booking_id, location, budget, notes, how, name, email, phone }
             let postedBookings = await db.post_booking(newBooking)
             console.log(postedBookings)
             res.status(200).send(postedBookings)
@@ -55,26 +76,39 @@ module.exports = {
     },
 
     askQuestion: async (req, res) => {
-        console.log("HIT")
         try {
+            const accountSid = TWILIO_ACCOUNT_SECRET_ID;
+            const authToken = TWILIO_AUTH_TOKEN;
+            const client = require('twilio')(accountSid, authToken);
+
             let db = req.app.get('db')
             let { name, email, phone, message } = req.body
-            console.log(name, email, phone, message)
             let question = await db.ask_question({ name, email, phone, message })
-            console.log(question)
-            res.status(200).send(question)
+
+            client.messages
+                .create({
+                    body: 
+                    `You have been asked a question:
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Message: ${message}`,
+                    from: TWILIO_PHONE_NUMBER,
+                    to: PERSONAL_PHONE_NUMBER
+                })
+                console.log(111111, question)
+            res.status(200).send(question, message.sid)
         } catch (error) {
-            console.log('Error posting the bookings', error)
+            console.log('Error asking the question', error)
             res.status(500).send(error)
         }
     },
 
     deleteQuestion: async (req, res) => {
-        console.log('Hit')
         try {
             let db = req.app.get('db')
             let { question_id } = req.params
-            const questions = await db.delete_question({question_id})
+            const questions = await db.delete_question({ question_id })
             res.status(200).send(questions)
         } catch (error) {
             console.log('Error deleting the question', error)
@@ -85,11 +119,11 @@ module.exports = {
     deleteBooking: async (req, res) => {
         console.log(typeof req.params.booking_id)
         try {
-           let db = req.app.get('db') 
-           let { booking_id } = req.params
-           const bookings = await db.delete_booking({booking_id})
-           console.log(51516516516516, bookings)
-           res.status(200).send(bookings)
+            let db = req.app.get('db')
+            let { booking_id } = req.params
+            const bookings = await db.delete_booking({ booking_id })
+            console.log(51516516516516, bookings)
+            res.status(200).send(bookings)
         } catch (error) {
             console.log('Error deleting the bookings', error)
             res.status(500).send(error)

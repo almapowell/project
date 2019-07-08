@@ -9,6 +9,7 @@
     "express": "^4.17.1",
     "express-session": "^1.16.2",
     "massive": "^5.11.0",
+    "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.1.0",
@@ -20,6 +21,7 @@
     "redux-promise-middleware": "^6.1.1",
     "sass": "^1.22.2",
     "stripe": "^7.4.0",
+    "twilio": "^3.33.0",
     "uuid": "^3.3.2"
   },
   "scripts": {

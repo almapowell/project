@@ -1,0 +1,62 @@
+@import "../SASS/extends";
+@import "../SASS/mixin";
+@import "../SASS/variable";
+
+* {
+    @extend %all;
+}
+
+///// Check position relative and absolute to keep footer at the bottom
+
+.footer {
+    @include flexCenter();
+    
+    // background-color: white;
+    // border-top: 2px solid black;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 80px;
+    width: 100%;
+    z-index: 10;
+
+    .footerIcons {
+        // flex-direction: row;
+        display: flex;
+        position: absolute;
+        // flex-direction: column;
+        // top: 50%;
+        // left: 50%;
+        top: 30px;
+        left: 140px;
+        // height: 50px;
+        // width: 80px;
+        transform: translate(-50%,-50%);
+        .facebook {
+            @extend %socialMediaIcons;
+            background-color: #4267B2;
+            // background-color: white;
+
+            
+        }
+    
+        .instagram {
+            @extend %socialMediaIcons;
+            // background-color: white;
+            
+            background-image: url("https://image.freepik.com/free-vector/instagram-background-in-gradient-colors_23-2147821883.jpg");
+            background-repeat: no-repeat;
+            background-size: 80px 80px;
+        }
+    
+        .youtube {
+            @extend %socialMediaIcons;
+            background-color: #FF0000;
+            // background-color: white;
+        }
+    }
+
+}
+

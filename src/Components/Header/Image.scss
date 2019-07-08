@@ -1,0 +1,8 @@
+@import '../SASS/variable';
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    background-color: $header;
+}

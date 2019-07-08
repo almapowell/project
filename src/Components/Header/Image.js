@@ -1,11 +1,11 @@
 import React from 'react';
-import BlackLogo from './LogoBlack1.png'
-import './Image.css'
+import WhiteLogo from './LogoWhite1.png'
+import './Image.scss'
 
 export default function Image() {
     return (
         <div className="container" >
-            <img src={BlackLogo} alt=""/>
+            <img src={WhiteLogo} alt=""/>
         </div>
     )
 }
