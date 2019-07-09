@@ -4,17 +4,15 @@ const uuid = require('uuid/v4')
 module.exports = {
     payment: async (req, res) => {
         console.log('Request:', req.body)
-        
-        let error;
-        let status;
-        try {
-            const {token} = req.body;
 
-            const customer = await 
-            stripe.customers.create({
-                email: token.email,
-                source: token.id
-            })
+        try {
+            const { token } = req.body;
+
+            const customer = await
+                stripe.customers.create({
+                    email: token.email,
+                    source: token.id
+                })
 
             const idempotency_key = uuid();
             console.log(idempotency_key)
@@ -28,25 +26,21 @@ module.exports = {
 
                 },
                 (err, charge) => {
-                    if(err) {
+                    if (err) {
                         console.log(err)
                         return res.status(500).send(err)
                     } else {
-                        console.log('Successful payment',charge)
+                        console.log('Successful payment', charge)
                         //this is where you would do something with that purchase (i.e. store that information to your db)
                         return res.status(200).send(charge)
                     }
                 }
-                // {
-                //     idempotency_key
-                // }
+
             )
-            // console.log("Charge:", { charge });
-            // status = "success";
+
         } catch (error) {
-            console.error("Error making payment", error)
-            res.sendStatus(500)
+            console.log('Error making payment', error)
         }
-        // res.send({error, charge, status})
     }
 }
+

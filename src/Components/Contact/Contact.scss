@@ -28,7 +28,7 @@
             font-size: 30px;
             box-shadow: 0 0 50px 0 black;
             border-radius: 15px;
-            width: 800px;
+            width: 850px;
             min-height: 20vh;
             // margin: 100px;
 
@@ -45,20 +45,14 @@
                 outline: none;
                 @extend %contactInput;
             }
-            .Cname {
-                // grid-column: 1/2;
-    
-
-            }
-
-            .Cemail {
-                // grid-column: 3/4;
-
-            }
+            
 
             .Cdropdown {
-                // border: 2px solid black;
                 grid-column: 1/4;
+                box-shadow: none;
+                justify-content: center;
+                // border: 2px solid red;
+                border-radius: 15px;
             }
         }
     }

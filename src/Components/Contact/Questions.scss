@@ -18,12 +18,12 @@
         margin: $margin;
         z-index: 1;
         width: 100%;
-        color: white;
+        color: black;
         word-wrap: break-word;
     }
     .Qphone{
         z-index: 1;
-        color: white;
+        color: black;
         width: 100%;
         word-wrap: break-word;
         margin: $margin;
@@ -31,24 +31,29 @@
     .Qemail{
         z-index: 1;
         width: 100%;
-        color: white;
+        color: black;
         word-wrap: break-word;
         margin: $margin;
     }
     .Qquestion{
         margin: $margin;
-        color: white;
+        color: black;
         z-index: 1;
         word-wrap: break-word;
     }
     .QdeleteBtn{
         margin: $margin;
         @extend %delete;
-        color: white;
-        box-shadow: 3px 4px white;
+        color: black;
+        box-shadow: 3px 4px black;
         background-color: $tempColor2;
         font-family: $cursive;
         font-size: 30px;
+        &:hover {
+            cursor: pointer;
+            box-shadow: 0 0 20px 0 black;
+            color: white;
+        }
     }
     .commentIcon {
         @extend %iconPositioning;

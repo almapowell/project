@@ -18,19 +18,34 @@
 }
 
 .DropdownGrid {
-  
+
     .mainDropdownLabel {
         display: flex;
         justify-content: center;
-        // border: 2px solid black;
         height: 100px;
         width: 100%;
-        // font-size: 15px;
         outline: none;
+        align-items: center;
     }
 
     .placeholder {
         font-size: 20px;
+
+    }
+
+
+    .submitBtn {
+        @extend %delete;
+        grid-column: 3/4;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(255, 255, 255);
+        color: black;
+        margin: 30px;
+        &:hover {
+        // box-shadow: 0 0 20px 0 white;
+        cursor: pointer;
+        }
     }
 }
 
@@ -38,6 +53,7 @@
 
 .question {
     @extend %formLayout;
+
     .ptagQ {
         margin: auto;
         grid-column: 1/4;
@@ -51,33 +67,40 @@
         width: 30vw;
         height: 8vw;
         border-radius: 15px;
+        outline: none;
+        padding: 15px;
     }
     
-    
+    .submitBtn {
+        margin: auto;
+        grid-column: 1/4;
+
+        @extend %delete;
+        background-color: rgb(255, 255, 255);
+        color: black;
+        &:hover {
+        box-shadow: 0 0 20px 0 white;
+        cursor: pointer;
+        }
+    }
    
 }
 
-.submitBtn {
-    margin: auto;
-    grid-column: 3/4;
-    // width: 30vw;
-    // height: 8vw;
-    @extend %delete;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0 0 20px 0 white;
-    color: black;
-    &:hover {
-        cursor: pointer;
-    }
-}
+
 
 .contactInputs {
     @extend %contactInput;
+    // border: 2px solid red;
+    // display: flex;
+    // justify-content: center;
+
 }
 
 .allBefores {
     display: flex;
     justify-content: center;
-    padding: 10px;
+    // padding: 50px;
     align-items: center;
+    // border: 2px solid red;
+
 }

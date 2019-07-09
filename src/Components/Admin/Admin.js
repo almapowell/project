@@ -18,7 +18,8 @@ class Admin extends Component {
         }
     }
 
-    handleLogin = () => {
+    handleLogin = (e) => {
+        e.preventDefault();
         const { email, password } = this.state
         if (!email || !password) {
             toast.error('Please check your entries')

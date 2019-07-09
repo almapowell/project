@@ -69,7 +69,6 @@ module.exports = {
     },
 
     currentAdmin: (req, res) => {
-        console.log(6551515, req.session.admin)
         res.send(req.session.admin)
     }
 }

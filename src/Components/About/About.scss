@@ -6,31 +6,39 @@
     @extend %mainLabel;
 }
 
+.aboutContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-// .container {
-//     @include flexCenter();
+.aboutPage {
+    margin: 20px;
+    border: 2px solid black;
+.mainParagraph {
+    text-indent: 2.0em;
+    font-family: $plain;
+    font-size: 30px;
+    float: left;
+    max-width: 50vw;
+    line-height: 1.6;
+    flex-wrap: wrap;
+    text-align: justify;
+    margin: 50px;
+}
 
-// .mainParagraph {
-//     text-indent: 2.0em;
-//     font-family: $plain;
-//     font-size: 25px;
-//     // max-width: 60vw;
-//     // margin: auto;
-//     // word-wrap: normal;
+.image {
+    height: 500px;
+    width: 500px;
+    margin: 50px 0 50px 50px;
+    // justify-content: center;
 
+}
 
-//     line-height: 1.6; 
-//     // font-family: Helvetica;
-//     // text-align: justify;
-//     // margin: 0;
-//     margin: 0 0 0 10px; 
-//     // font-size: 14px;
-// }
+}
 
-// .image {
-//     height: 500px;
-//     width: 500px;
-//     // float: left;
-//     // align-self: baseline;
-// }
-// }
+@media screen and (max-width: 1300px) {
+    .mainParagraph {
+        font-size: 25px;
+    }
+}

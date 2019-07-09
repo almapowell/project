@@ -14,7 +14,6 @@ export default class Header extends Component {
                     <Link to="/films" className="films"><i className="fas fa-film fa-fw"></i>Films</Link>
                     <Link to="/contact" className="contact"><i className="fas fa-address-card fa-fw"></i>Contact</Link>
                 </nav>
-
             </div>
         )
     }

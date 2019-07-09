@@ -40,7 +40,9 @@ class Dropdown extends Component {
         this.props.history.push('/')
     }
 
-    askQuestion = () => {
+    askQuestion = (e) => {
+        e.preventDefault();
+        console.log('made it to the on click')
         let { name, email, phone } = this.props.contact
         let { message } = this.state
         console.log(name, email, phone, message)
@@ -123,10 +125,10 @@ class Dropdown extends Component {
                         <div className="stripe">
                             <Stripe />
                         </div>
-                        <div className="submitBtn">
+                        {/* <div> */}
 
                             <button className="submitBtn" onClick={this.createBooking} >Submit</button>
-                        </div>
+                        {/* </div> */}
                     </div>
                     :
                     <div className="question" >

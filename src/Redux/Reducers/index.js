@@ -17,7 +17,6 @@ const GET_USER = 'GET_USER'
 
 
 export default function (state = initialState, action) {
-    console.log(11111, action.type, action.payload)
     switch(action.type) {
         case SAVE_USER:
             return { ...state, admin_id: action.payload.admin_id, email: action.payload.email }

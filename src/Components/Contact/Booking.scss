@@ -89,24 +89,39 @@
     @extend %delete;
     background-color: $darkPurple;
     font-family: $cursive;
-    color: white;
+    color: black;
     font-size: 30px;
+    &:hover {
+        color: white;
+        cursor: pointer;
+        box-shadow: 0 0 20px 0 black;
+    }
 }
 
 .BeditBooking {
     @extend %delete;
     background-color: $darkPurple;
     font-family: $cursive;
-    color: white;
+    color: black;
     font-size: 30px;
+    &:hover {
+        cursor: pointer;
+        color: white;
+        box-shadow: 0 0 20px 0 black;
+    }
 }
 
 .BsubmitBooking {
     @extend %delete;
     background-color: $darkPurple;
     font-family: $cursive;
-    color: white;
+    color: black;
     font-size: 30px;
+    &:hover {
+        cursor: pointer;
+        color: white;
+        box-shadow: 0 0 20px 0 black;
+    }
 }
 
 .bookingIcon {

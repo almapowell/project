@@ -5,7 +5,7 @@ import './Image.scss'
 export default function Image() {
     return (
         <div className="container" >
-            <img src={WhiteLogo} alt=""/>
+            <img className="headerImg" src={WhiteLogo} alt=""/>
         </div>
     )
 }

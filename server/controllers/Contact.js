@@ -77,9 +77,11 @@ Reference: ${how}`,
 
     askQuestion: async (req, res) => {
         try {
+            console.log('hit the back end for questions')
             const accountSid = TWILIO_ACCOUNT_SECRET_ID;
             const authToken = TWILIO_AUTH_TOKEN;
             const client = require('twilio')(accountSid, authToken);
+            console.log(1111111332322323232332, client)
 
             let db = req.app.get('db')
             let { name, email, phone, message } = req.body
@@ -96,8 +98,8 @@ Message: ${message}`,
                     from: TWILIO_PHONE_NUMBER,
                     to: PERSONAL_PHONE_NUMBER
                 })
-                console.log(111111, question)
-            res.status(200).send(question, message.sid)
+            res.status(200).send(question)
+            // res.status(200).send([...question, message.sid])
         } catch (error) {
             console.log('Error asking the question', error)
             res.status(500).send(error)
