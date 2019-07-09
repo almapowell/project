@@ -84,5 +84,14 @@
     }
 }
 
+@media screen and (max-width: 500px) {
+    .contactP {
+        margin: auto;
+        font-size: 20px;
+        text-indent: 1.6em;
+        font-family: $plain;
+    }
+}
+
 
 

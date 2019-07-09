@@ -30,3 +30,69 @@
 .contact{
     @extend %navbar;
 }
+
+@media screen and (max-width: 500px) {
+    .home {
+    font-family: $cursive;
+    font-weight: $weight;
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    &:hover {
+        // text-decoration: underline;
+        // border-bottom: 5px solid white;
+
+
+        border-bottom: solid 5px white;
+        transition: border-width 0.2s linear;
+    }
+}
+
+.about{
+    font-family: $cursive;
+    font-weight: $weight;
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    &:hover {
+        // text-decoration: underline;
+        // border-bottom: 5px solid white;
+
+
+        border-bottom: solid 5px white;
+        transition: border-width 0.2s linear;
+    }
+}
+
+.films{
+    font-family: $cursive;
+    font-weight: $weight;
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    &:hover {
+        // text-decoration: underline;
+        // border-bottom: 5px solid white;
+
+
+        border-bottom: solid 5px white;
+        transition: border-width 0.2s linear;
+    }
+}
+
+.contact{
+   font-family: $cursive;
+    font-weight: $weight;
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    &:hover {
+        // text-decoration: underline;
+        // border-bottom: 5px solid white;
+
+
+        border-bottom: solid 5px white;
+        transition: border-width 0.2s linear;
+    }
+}
+}
