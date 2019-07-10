@@ -123,7 +123,7 @@ class Dropdown extends Component {
                         </div>
 
                         <div className="stripe">
-                            <Stripe />
+                            {/* <Stripe /> */}
                         </div>
                             <button className="submitBtn" onClick={this.createBooking} >Submit</button>
                     </div>
