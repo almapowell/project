@@ -6,4 +6,9 @@
     justify-content: center;
     background-color: $header;
     overflow: hidden;
+    
+}
+
+.container > img {
+    max-width: 100%;
 }

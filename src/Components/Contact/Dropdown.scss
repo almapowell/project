@@ -104,3 +104,17 @@
     // border: 2px solid red;
 
 }
+
+@media screen and (max-width: 500px) {
+    .DropdownGrid {
+        .placeholder {
+            font-size: 15px;
+            font-family: $plain;
+    }
+    .submitBtn {
+        width: 70px;
+        font-size: 15px;
+        padding: 5px;
+    }
+    }
+}

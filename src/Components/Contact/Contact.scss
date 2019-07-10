@@ -85,13 +85,25 @@
 }
 
 @media screen and (max-width: 500px) {
+    .contactLabel {
     .contactP {
-        margin: auto;
+        margin: 20px;
         font-size: 20px;
         text-indent: 1.6em;
         font-family: $plain;
     }
+
+    }
 }
 
-
+// @media screen and (max-width: 1300px) {
+//     .Cdropdown {
+//         // grid-column: 1/4;
+//         box-shadow: none;
+//         // justify-content: center;
+//         // border: 2px solid red;
+//         border-radius: 15px;
+//         width: 80%;
+//     }
+// }
 

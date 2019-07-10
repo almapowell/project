@@ -66,7 +66,7 @@ class Dropdown extends Component {
         return (
             <div className="DropdownGrid">
                 <div className="mainDropdownLabel">
-                    <label>What are you here for?</label>
+                    <label className="hereFor">What are you here for?</label>
                     <br/>
                     <select className="mainSelector" value={this.state.selected} onChange={this.handleChange} >
                         <option className="placeholder" value="">Please Select One:</option>
@@ -125,10 +125,7 @@ class Dropdown extends Component {
                         <div className="stripe">
                             <Stripe />
                         </div>
-                        {/* <div> */}
-
                             <button className="submitBtn" onClick={this.createBooking} >Submit</button>
-                        {/* </div> */}
                     </div>
                     :
                     <div className="question" >
